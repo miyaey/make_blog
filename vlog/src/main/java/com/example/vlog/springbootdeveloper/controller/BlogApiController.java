@@ -32,9 +32,9 @@ public class BlogApiController {
     @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticles(){
         List<ArticleResponse> articles = blogService.findAll()
-                .stream()
-                .map(ArticleResponse::new)
-                .collect(Collectors.toList()); //tolist(); 이어야 함
+                .stream() //blogService 결과로 넘어온 Article의 Stream을
+                .map(ArticleResponse::new)//.map을 통해 ArticleResponse로 변환하여
+                .collect(Collectors.toList()); //List로 반환, 책에는 tolist();
 
         return ResponseEntity.ok()
                 .body(articles);
